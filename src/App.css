@@ -559,3 +559,25 @@ margin-left: 35px;
     display: flex;
     justify-content: space-evenly;
   }
+  .payment-section{
+   position: relative;
+   top: 10px;
+   left: 400px;
+    background-color:green ;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+  }
+  .payment-details>p{
+    color: wheat;
+    font-size: 30px;
+  }
+  .payment-details>button{
+    background-color:teal;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 80%;
+    color: white;
+  }

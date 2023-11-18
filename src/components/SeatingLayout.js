@@ -55,11 +55,33 @@ const SeatingLayout = (props) => {
         : [...prevSelectedSeats, seatId];
     });
   };
+  // Function to calculate the total price based on the number of selected seats
+  const calculateTotalPrice = () => {
+    // Assuming each seat costs a fixed price
+    const pricePerSeat = 10; // You can adjust this as needed
+    return selectedSeats.length * pricePerSeat;
+  };
 
+  const handlePay = () => {
+    const totalPrice = calculateTotalPrice();
+    // Implement payment logic here using totalPrice
+    console.log(`Total Price: $${totalPrice}`);
+    // Add your payment handling logic (e.g., redirect to payment gateway, display payment modal, etc.)
+  };
   return (
     <div className="tss">
-      {/* ... (previous code) */}
-
+      <div className="movieInfo">
+        <div className="fgrid">
+          <h1>{transferState.movieName}</h1>
+          <h4>{transferState.theatreName}</h4>
+        </div>
+        <div className="sgrid">
+          <ShowTime
+            time={transferState.time}
+            selectedShowTime={transferState.ShowTime}
+          />
+        </div>
+      </div>
       <div className="theater">
         {seatingData.map((rowInfo) => {
           if (!rowInfo) {
@@ -102,6 +124,14 @@ const SeatingLayout = (props) => {
             </div>
           );
         })}
+      </div>
+      <div className="payment-section">
+        {selectedSeats.length > 0 && (
+          <div className="payment-details">
+            <p>Total Price: ₹{calculateTotalPrice()}</p>
+            <button onClick={handlePay}>Pay Now</button>
+          </div>
+        )}
       </div>
     </div>
   );
